@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: red;
+            background: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            color: green;
+            background: #e6ffe6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Besin Değerleri API Test</h1>
+    
+    <div class="input-group">
+        <input type="text" id="foodInput" placeholder="Yemek adı girin...">
+        <button onclick="searchFood()">Ara</button>
+    </div>
+
+    <div id="result">Sonuçlar burada görünecek...</div>
+
+    <script>
+        async function searchFood() {
+            const foodName = document.getElementById('foodInput').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (!foodName) {
+                resultDiv.innerHTML = '<div class="error">Lütfen bir yemek adı girin!</div>';
+                return;
+            }
+
+            try {
+                resultDiv.innerHTML = 'Yükleniyor...';
+                
+                // USDA API anahtarı ve URL
+                const API_KEY = 'BPKplxXhb2txHBOjcmYtG3yRdPzlgekVIKS229XR';
+                const API_URL = 'https://api.nal.usda.gov/fdc/v1/foods/search';
+                
+                const response = await fetch(
+                    `${API_URL}?api_key=${API_KEY}&query=${encodeURIComponent(foodName)}`,
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }
+                );
+
+                const data = await response.json();
+                console.log('API Yanıtı:', data); // Debug için
+
+                if (!response.ok) {
+                    throw new Error(`API Hatası: ${response.status} - ${data.message || 'Bilinmeyen hata'}`);
+                }
+
+                if (!data.foods || data.foods.length === 0) {
+                    resultDiv.innerHTML = `<div class="error">"${foodName}" için sonuç bulunamadı</div>`;
+                    return;
+                }
+
+                const food = data.foods[0];
+                const nutrients = food.foodNutrients;
+
+                // Besin değerlerini bul
+                const calories = nutrients.find(n => n.nutrientId === 1008)?.value || 0;
+                const protein = nutrients.find(n => n.nutrientId === 1003)?.value || 0;
+                const fat = nutrients.find(n => n.nutrientId === 1004)?.value || 0;
+                const carbs = nutrients.find(n => n.nutrientId === 1005)?.value || 0;
+
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h3>${food.description}</h3>
+                        <p>100g için besin değerleri:</p>
+                        <ul>
+                            <li>Kalori: ${calories.toFixed(1)} kcal</li>
+                            <li>Protein: ${protein.toFixed(1)} g</li>
+                            <li>Karbonhidrat: ${carbs.toFixed(1)} g</li>
+                            <li>Yağ: ${fat.toFixed(1)} g</li>
+                        </ul>
+                        <p><small>Ham API yanıtı:</small></p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('API Hatası:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <p>Bir hata oluştu:</p>
+                        <p>${error.message}</p>
+                        <p><small>Lütfen API anahtarını kontrol edin.</small></p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html> 

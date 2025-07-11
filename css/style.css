@@ -1,0 +1,1376 @@
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #27ae60;
+    --accent-color: #3498db;
+    --text-color: #2c3e50;
+    --light-gray: #ecf0f1;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #2ecc71, #3498db);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.welcome-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: var(--gradient);
+}
+
+.hero-section {
+    text-align: center;
+    color: var(--white);
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section .subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+/* Profile Page Styles */
+.profile-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.profile-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.profile-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.profile-container input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.profile-container input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.profile-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: var(--light-gray);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stats-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.category {
+    font-size: 1rem !important;
+    color: var(--accent-color) !important;
+    margin-top: 0.5rem;
+}
+
+.food-calculator {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin: 2rem auto;
+}
+
+.food-calculator h2 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.food-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.food-entry {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.food-entry:hover {
+    transform: translateX(5px);
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.food-input {
+    flex: 3;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.portion-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    min-width: 100px;
+}
+
+.remove-food {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-food:hover {
+    background: #ff6b81;
+    transform: scale(1.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.secondary-button {
+    background: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.secondary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.nutrition-summary {
+    background: var(--gradient);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.nutrition-summary h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.nutrition-summary p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+/* Responsive tasarım için */
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    .food-input, .portion-input {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .remove-food {
+        align-self: flex-end;
+    }
+}
+
+.save-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.save-button {
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.save-button .icon {
+    font-size: 1.2rem;
+}
+
+.metabolic-summary {
+    grid-column: 1 / -1;
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-top: 1rem;
+}
+
+.metabolic-summary p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.bmi-info {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.stat-card .category {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 2rem;
+    background: var(--gradient);
+    color: var(--white) !important;
+    font-size: 0.9rem !important;
+    margin-top: 0.5rem;
+}
+
+/* Loading Spinner (küçük) */
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-spinner .circle-loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--light-gray);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+.loading-spinner p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Besin değerleri grid */
+.nutrient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.nutrient-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.nutrient-label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.nutrient-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Hata mesajı */
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 0.5rem;
+}
+
+.error-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.error-details {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+/* Header Styles */
+.main-header {
+    background: var(--gradient);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header başlıklarını beyaz yap */
+.header-content h1,
+.header-left h1 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* PDF ve Ayarlar butonlarını beyaz yap */
+.pdf-button, 
+.settings-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pdf-button:hover, 
+.settings-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Ayarlar butonu için özel stil */
+.settings-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    padding: 0;
+}
+
+.settings-button:hover {
+    transform: rotate(30deg);
+}
+
+/* Header butonları için container */
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Rapor Stilleri */
+.report-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.report-date {
+    color: var(--text-color);
+    font-style: italic;
+}
+
+.report-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 0.5rem;
+}
+
+.report-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.info-grid, .metrics-grid, .nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.analysis-content, .exercise-content {
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Beslenme Durumu Stilleri */
+.nutrition-status {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.status-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.status-indicator {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.status-good {
+    background: #2ecc71;
+    color: white;
+}
+
+.status-medium {
+    background: #f1c40f;
+    color: white;
+}
+
+.status-bad {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Geçmiş Kayıtlar Stilleri */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.history-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.history-date {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Settings Styles */
+.settings-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.settings-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-item label {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Theme and Language Selectors */
+.theme-selector, .language-selector {
+    display: flex;
+    gap: 1rem;
+}
+
+.theme-btn, .lang-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-btn.active, .lang-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Dil seçimi */
+.language-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.lang-btn {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Ayarlar butonu */
+.settings-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.settings-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(30deg);
+}
+
+/* Rapor butonu */
+.report-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.report-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report-button i {
+    font-size: 1.2rem;
+}
+
+.report-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading Spinner */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.circle-loader {
+    width: 100px;
+    height: 100px;
+    border: 6px solid var(--light-gray);
+    border-top: 6px solid var(--primary-color);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
+}
+
+.loading-content p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* Rapor Stilleri Güncelleme */
+.report-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+.report-section:nth-child(2) { animation-delay: 0.1s; }
+.report-section:nth-child(3) { animation-delay: 0.2s; }
+.report-section:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Metrik Kartları */
+.metric-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.metric-label {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.health-analysis-content {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.health-score {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.mini-progress {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.mini-progress .progress {
+    height: 100%;
+    background: var(--primary-color);
+}
+
+.analysis-points ol {
+    padding-left: 20px;
+}
+
+.analysis-points li {
+    margin-bottom: 15px;
+}
+
+.analysis-points strong {
+    color: var(--text-color);
+}
+
+.report-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.report-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.2rem 3rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: var(--shadow);
+}
+
+.report-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: var(--secondary-color);
+}
+
+.report-button i {
+    font-size: 1.3rem;
+}
+
+.meals-list {
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--light-gray);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.meal-item:last-child {
+    border-bottom: none;
+}
+
+.meal-name {
+    font-weight: 500;
+    flex: 2;
+}
+
+.meal-portion {
+    color: var(--text-color);
+    opacity: 0.8;
+    flex: 1;
+    text-align: center;
+}
+
+.meal-calories {
+    color: var(--primary-color);
+    font-weight: 500;
+    flex: 1;
+    text-align: right;
+}
+
+.nutrition-totals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--light-gray);
+}
+
+/* Beslenme Özeti Stilleri */
+.nutrition-summary-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.total-calories-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f6f8fb 0%, #f1f4f9 100%);
+    border-radius: 12px;
+}
+
+.calories-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.calories-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.calories-unit {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.calories-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 0.5rem;
+}
+
+.macro-distribution {
+    flex: 1;
+    margin-left: 2rem;
+}
+
+.macro-bar {
+    height: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+}
+
+.protein-bar { background: #FF6B6B; }
+.carbs-bar { background: #4ECDC4; }
+.fat-bar { background: #FFD93D; }
+
+.macro-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.macro-labels span {
+    color: var(--text-color) !important;
+    font-weight: 500;
+}
+
+.protein-label { color: #FF6B6B; }
+.carbs-label { color: #4ECDC4; }
+.fat-label { color: #FFD93D; }
+
+.nutrients-detail {
+    margin-bottom: 2rem;
+}
+
+.nutrient-detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.nutrient-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.nutrient-info {
+    flex: 1;
+}
+
+.nutrient-bar {
+    width: 150px;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.nutrient-bar .progress {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.meals-summary {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.meals-summary h4 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.meal-item:hover {
+    transform: translateX(5px);
+}
+
+.meal-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-name {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.meal-portion {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.meal-nutrients {
+    text-align: right;
+}
+
+.meal-calories {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.macro-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-left: 5px;
+}
+
+.macro-pill.protein { background: #FFE3E3; color: #FF6B6B; }
+.macro-pill.carbs { background: #E3FFF8; color: #4ECDC4; }
+.macro-pill.fat { background: #FFF5D1; color: #FFD93D; }
+
+.no-data {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 12px;
+}
+
+.no-data-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Geçmiş Kayıtlar Login Mesajı */
+.history-login-required {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.history-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.history-login-required h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.history-login-required p {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.login-button {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: var(--primary-color);
+}
+
+.login-button i {
+    font-size: 1.2rem;
+}
+
+/* Kalori Karşılaştırma Stilleri */
+.calorie-comparison {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin: 2rem 0;
+}
+
+.comparison-header h4 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.comparison-bars {
+    margin-bottom: 1.5rem;
+}
+
+.comparison-item {
+    margin-bottom: 1rem;
+}
+
+.comparison-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.comparison-bar {
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-weight: 500;
+    transition: width 0.3s ease;
+}
+
+.bar-fill.need {
+    background: var(--accent-color);
+}
+
+.bar-fill.consumed {
+    background: var(--primary-color);
+}
+
+.calorie-message {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.calorie-message.under {
+    background: #fff5f5;
+    color: #e53e3e;
+}
+
+.calorie-message.over {
+    background: #f0fff4;
+    color: #38a169;
+}
+
+.calorie-message.perfect {
+    background: #ebf8ff;
+    color: #3182ce;
+}
+
+.calorie-message i {
+    font-size: 1.2rem;
+}
+
+.calorie-comparison-section {
+    margin: 2rem 0;
+}
+
+.calorie-comparison-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.calorie-comparison-content {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* PDF için özel stiller */
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .report-container {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        box-shadow: none !important;
+    }
+
+    .report-section {
+        page-break-inside: avoid;
+        margin-bottom: 30px !important;
+    }
+
+    .report-header {
+        text-align: center;
+        margin-bottom: 30px !important;
+    }
+
+    .metric-card {
+        break-inside: avoid;
+    }
+
+    .nutrition-summary-container,
+    .health-analysis-content,
+    .exercise-content {
+        break-inside: avoid;
+    }
+
+    /* Yazdırma sırasında gizlenecek elementler */
+    .report-actions,
+    .header-buttons,
+    .main-header {
+        display: none !important;
+    }
+}
+
+/* PDF indirme butonu için yeni stil */
+.pdf-button {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.pdf-button:hover {
+    transform: translateY(-2px);
+    background: var(--primary-color);
+}
+
+.pdf-button i {
+    font-size: 1.2rem;
+}
+
+.report-header h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+} 

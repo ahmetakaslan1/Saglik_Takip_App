@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Oluştur - Sağlıklı Yaşam Asistanı</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Sağlıklı Yaşam Asistanı</h1>
+            <button onclick="resetForm()" class="reset-button">
+                <i class="fas fa-undo"></i> Profili Sıfırla
+            </button>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <h2>Profil Oluştur</h2>
+        
+        <form id="profileForm" class="profile-form">
+            <div class="form-group">
+                <label for="name">İsminiz</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Cinsiyet:</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Erkek</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Kadın</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Yaş:</label>
+                <input type="number" id="age" required min="15" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Kilo (kg):</label>
+                <input type="number" id="weight" required step="0.1">
+            </div>
+
+            <div class="form-group">
+                <label for="height">Boy (cm):</label>
+                <input type="number" id="height" required>
+            </div>
+
+            <div class="form-group">
+                <label for="activity">Aktivite Seviyesi:</label>
+                <select id="activity" required>
+                    <option value="1.2">Hareketsiz</option>
+                    <option value="1.375">Hafif Aktif</option>
+                    <option value="1.55">Orta Aktif</option>
+                    <option value="1.725">Çok Aktif</option>
+                    <option value="1.9">Ekstra Aktif</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="primary-button">Devam Et</button>
+                <button type="button" class="secondary-button" onclick="resetForm()">
+                    <i class="fas fa-undo"></i> Sıfırla
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Önce config yüklensin -->
+    <script src="../js/config.js"></script>
+    <!-- Sonra database ve diğer script'ler -->
+    <script src="../js/database.js"></script>
+    <script src="../js/bmi.js"></script>
+    <script src="../js/bmr.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Tüm form alanlarını temizle
+        const form = document.getElementById('profileForm');
+        form.reset();
+        
+        // İsim alanını temizle
+        document.getElementById('name').value = '';
+        
+        // Yaş alanını temizle
+        document.getElementById('age').value = '';
+        
+        // Kilo alanını temizle
+        document.getElementById('weight').value = '';
+        
+        // Boy alanını temizle
+        document.getElementById('height').value = '';
+        
+        // Aktivite seviyesini boş bırak
+        document.getElementById('activity').selectedIndex = -1;
+        
+        // Cinsiyet seçimini temizle
+        document.querySelectorAll('input[name="gender"]').forEach(radio => {
+            radio.checked = false;
+        });
+    });
+
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        try {
+            // Form verilerini al
+            const profileData = {
+                name: document.getElementById('name').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                age: parseInt(document.getElementById('age').value),
+                weight: parseFloat(document.getElementById('weight').value),
+                height: parseInt(document.getElementById('height').value),
+                activityLevel: parseFloat(document.getElementById('activity').value)
+            };
+
+            // Profil verilerini localStorage'a kaydet
+            localStorage.setItem('userProfile', JSON.stringify(profileData));
+
+            // Başarılı mesajı göster
+            Swal.fire({
+                icon: 'success',
+                title: 'Profil Kaydedildi!',
+                text: 'Hesaplama sayfasına yönlendiriliyorsunuz...',
+                timer: 2000,
+                showConfirmButton: false
+            }).then(() => {
+                window.location.href = 'calculator.html';
+            });
+        } catch (error) {
+            console.error('Form gönderme hatası:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata!',
+                text: 'Profil kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.'
+            });
+        }
+    });
+
+    function resetForm() {
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Profil bilgileriniz sıfırlanacak!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, sıfırla!',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Form elemanlarını sıfırla
+                const form = document.getElementById('profileForm');
+                const inputs = form.querySelectorAll('input[type="number"]');
+                const radios = form.querySelectorAll('input[type="radio"]');
+                const select = form.querySelector('select');
+
+                inputs.forEach(input => input.value = '');
+                radios.forEach(radio => radio.checked = false);
+                select.value = '1.2';
+
+                // LocalStorage'ı temizle
+                localStorage.clear();
+
+                // Animasyon efekti
+                form.style.animation = 'shake 0.5s';
+                setTimeout(() => form.style.animation = '', 500);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sıfırlandı!',
+                    text: 'Profil bilgileri başarıyla sıfırlandı.',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            }
+        });
+    }
+    </script>
+
+    <style>
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
+    </style>
+</body>
+</html> 

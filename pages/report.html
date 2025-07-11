@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlık Raporu - Sağlıklı Yaşam Asistanı</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Diğer CSS'ler -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <!-- PDF için -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Sağlık Raporu</h1>
+            <div class="header-buttons">
+                <button onclick="generatePDF()" class="pdf-button">
+                    <i class="fas fa-file-pdf"></i> PDF İndir
+                </button>
+                <button onclick="window.location.href='settings.html'" class="settings-button">
+                    <i class="fas fa-cog"></i> Ayarlar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-container" id="reportContent">
+        <div class="report-header">
+            <h2>Kişisel Sağlık Raporu</h2>
+            <p class="report-date"></p>
+        </div>
+
+        <div class="report-section user-info">
+            <h3>Kişisel Bilgiler</h3>
+            <div class="info-grid">
+                <!-- Kişisel bilgiler buraya gelecek -->
+            </div>
+        </div>
+
+        <div class="report-section health-metrics">
+            <h3>Sağlık Metrikleri</h3>
+            <div class="metrics-grid">
+                <!-- BMI, BMR vs. buraya gelecek -->
+            </div>
+        </div>
+
+        <div class="report-section nutrition-summary">
+            <h3>Beslenme Özeti</h3>
+            <div class="nutrition-grid">
+                <!-- Beslenme özeti buraya gelecek -->
+            </div>
+        </div>
+
+        <!-- Yeni kalori karşılaştırma bölümü -->
+        <div class="report-section calorie-comparison-section">
+            <h3>Kalori Karşılaştırması</h3>
+            <div class="calorie-comparison-content">
+                <!-- Kalori karşılaştırması buraya gelecek -->
+            </div>
+        </div>
+
+        <div class="report-section health-analysis">
+            <h3>Sağlık Analizi</h3>
+            <div class="analysis-content">
+                <!-- AI analizi buraya gelecek -->
+            </div>
+        </div>
+
+        <div class="report-section exercise-plan">
+            <h3>Önerilen Egzersiz Planı</h3>
+            <div class="exercise-content">
+                <!-- AI egzersiz önerileri buraya gelecek -->
+            </div>
+        </div>
+
+        <!-- Geçmiş Kayıtlar bölümü -->
+        <div class="report-section history">
+            <h3>Geçmiş Kayıtlar</h3>
+            <div class="history-grid">
+                <!-- Geçmiş kayıtlar buraya gelecek -->
+            </div>
+        </div>
+
+        <!-- Rapor kaydetme butonları -->
+        <div class="report-actions" style="display: none;">
+            <button onclick="saveReport()" class="save-button">
+                <i class="fas fa-save"></i> Raporu Kaydet
+            </button>
+            <button onclick="generatePDF()" class="pdf-button">
+                <i class="fas fa-file-pdf"></i> PDF İndir
+            </button>
+        </div>
+    </div>
+
+    <!-- Önce config ve database yüklensin -->
+    <script src="../js/config.js"></script>
+    <script src="../js/database.js"></script>
+    <script src="../js/calculator.js"></script>
+    
+    <!-- Sonra servisler yüklensin -->
+    <script src="../js/services/aiService.js"></script>
+    <script src="../js/services/foodService.js"></script>
+    <script src="../js/services/translationService.js"></script>
+    
+    <!-- En son rapor script'i yüklensin -->
+    <script src="../js/report.js"></script>
+</body>
+</html> 

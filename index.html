@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlıklı Yaşam Asistanı</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="welcome-container">
+        <header class="hero-section">
+            <h1>Sağlıklı Yaşam Asistanına Hoş Geldiniz</h1>
+            <p class="subtitle">Beslenme alışkanlıklarınızı takip edin, sağlıklı yaşayın!</p>
+        </header>
+
+        <div class="features-section">
+            <div class="feature-card">
+                <img src="assets/images/bmi-icon.png" alt="BMI">
+
+                <h3>Vücut Kitle İndeksi</h3>
+                <p>Kilonuzun ideal aralıkta olup olmadığını öğrenin</p>
+            </div>
+            <div class="feature-card">
+                <img src="assets/images/bmr-icon.png" alt="BMR">
+                <h3>Bazal Metabolizma</h3>
+                <p>Günlük kalori ihtiyacınızı hesaplayın</p>
+            </div>
+            <div class="feature-card">
+                <img src="assets/images/food-icon.png" alt="Kalori">
+                <h3>Kalori Takibi</h3>
+                <p>Yediklerinizin besin değerlerini hesaplayın</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <button onclick="startJourney()" class="primary-button">Hemen Başla</button>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script>
+        function startJourney() {
+            window.location.href = 'pages/profile.html';
+        }
+    </script>
+</body>
+</html> 

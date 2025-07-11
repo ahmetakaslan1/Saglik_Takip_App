@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalori Hesaplayıcı - Sağlıklı Yaşam Asistanı</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+    <!-- Header ekle -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Sağlıklı Yaşam Asistanı</h1>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Üst Bilgi Paneli -->
+        <div class="stats-panel">
+            <div class="stat-card">
+                <h3>Günlük Kalori İhtiyacı</h3>
+                <p id="dailyCalories">2500 kcal</p>
+            </div>
+            <div class="stat-card">
+                <h3>Vücut Kitle İndeksi</h3>
+                <p id="bmiValue">24.5 kg/m²</p>
+                <p id="bmiCategory" class="category">Normal</p>
+            </div>
+            <div class="stat-card">
+                <h3>Bazal Metabolizma</h3>
+                <p id="bmrValue">1800 kcal</p>
+            </div>
+        </div>
+
+        <!-- Yemek Ekleme Bölümü -->
+        <div class="food-calculator">
+            <h2>Kalori Hesaplayıcı</h2>
+            
+            <!-- Dil seçimi ekle -->
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="tr">Türkçe</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+
+            <div class="food-list" id="foodList">
+                <div class="food-entry">
+                    <div class="input-group">
+                        <input type="text" class="food-input" placeholder="Yemek adını giriniz...">
+                        <input type="number" class="portion-input" placeholder="Gram" value="100">
+                        <button class="remove-food" onclick="removeFoodEntry(this)">×</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button onclick="addNewFoodEntry()" class="secondary-button">
+                    <span class="icon">+</span> Yemek Ekle
+                </button>
+                <button onclick="calculateTotal()" class="primary-button">
+                    <span class="icon">✓</span> Hesapla
+                </button>
+              
+            </div>
+
+            <div class="nutrition-summary" id="nutritionSummary">
+                <!-- Toplam besin değerleri buraya gelecek -->
+            </div>
+        </div>
+
+        <!-- Rapor Görüntüleme Butonu -->
+        <div class="report-button-container">
+            <button onclick="window.location.href='report.html'" class="report-button">
+                <i class="fas fa-file-medical"></i> Raporu Görüntüle
+            </button>
+        </div>
+    </div>
+
+    <!-- Config dosyasını en başta yükle -->
+    <script src="../js/config.js"></script>
+    <!-- Önce Calculator sınıfını yükle -->
+    <script src="../js/calculator.js"></script>
+    <!-- Sonra diğer script'leri yükle -->
+    <script src="../js/database.js"></script>
+</body>
+</html> 

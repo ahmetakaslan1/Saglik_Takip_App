@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayarlar - Sağlıklı Yaşam Asistanı</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header component -->
+    <header class="main-header">
+        <!-- ... header içeriği ... -->
+    </header>
+
+    <div class="settings-container">
+        <div class="settings-section">
+            <h2>Genel Ayarlar</h2>
+            
+            <div class="setting-item">
+                <label>Tema</label>
+                <div class="theme-selector">
+                    <button class="theme-btn light active" onclick="setTheme('light')">
+                        <i class="fas fa-sun"></i> Açık
+                    </button>
+                    <button class="theme-btn dark" onclick="setTheme('dark')">
+                        <i class="fas fa-moon"></i> Koyu
+                    </button>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label>Dil</label>
+                <div class="language-selector">
+                    <button class="lang-btn active" onclick="setLanguage('tr')">
+                        <img src="../assets/tr.png" alt="TR"> Türkçe
+                    </button>
+                    <button class="lang-btn" onclick="setLanguage('en')">
+                        <img src="../assets/en.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label>Bildirimler</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="notifications" checked>
+                    <label for="notifications"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Profil Ayarları</h2>
+            <div class="setting-item">
+                <button class="primary-button" onclick="window.location.href='profile.html'">
+                    <i class="fas fa-user-edit"></i> Profili Düzenle
+                </button>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Veri Yönetimi</h2>
+            <div class="setting-item">
+                <button class="danger-button" onclick="confirmDataReset()">
+                    <i class="fas fa-trash"></i> Tüm Verileri Sıfırla
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/settings.js"></script>
+</body>
+</html> 

@@ -1,0 +1,34 @@
+food-calculator/
+  ├── index.html          # Ana sayfa
+  ├── assets/            # Resimler ve diğer medya dosyaları
+  │   └── images/
+  ├── css/              # Stil dosyaları
+  │   ├── style.css
+  │   └── components.css
+  ├── js/               # JavaScript dosyaları
+  │   ├── script.js
+  │   └── config.js
+  ├── pages/            # HTML sayfaları
+  │   ├── calculator.html
+  │   ├── profile.html
+  │   └── settings.html
+  │
+  └── api/              # PHP Backend
+      ├── config/
+      │   ├── database.php   # Veritabanı bağlantısı
+      │   └── config.php     # Genel ayarlar
+      ├── controllers/
+      │   ├── UserController.php
+      │   ├── ProfileController.php
+      │   └── MealController.php
+      ├── models/
+      │   ├── User.php
+      │   ├── Profile.php
+      │   └── Meal.php
+      ├── includes/
+      │   ├── functions.php
+      │   └── auth.php
+      └── endpoints/
+          ├── user.php
+          ├── profile.php
+          └── meal.php 
